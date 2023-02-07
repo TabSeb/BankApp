@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BancoApp.Models.SolicitudPaquete>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoPaquete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaSolicitud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aprobada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAprobacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotivoRechazo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.numeroDocumento)
+
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoPaquete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaSolicitud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aprobada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaAprobacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotivoRechazo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.numeroDocumento)
+
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SolPaqueteId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SolPaqueteId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SolPaqueteId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

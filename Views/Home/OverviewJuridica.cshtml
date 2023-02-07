@@ -1,0 +1,50 @@
+﻿@model BancoApp.Models.PersonaJuridica
+
+@{
+    ViewData["Title"] = "OverviewJuridica";
+
+}
+
+<h1>OverviewJuridica</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.razonSocial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.razonSocial)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.tipoDocumento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.tipoDocumento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.numeroDocumento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.numeroDocumento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Restriccion)
+        </dt>
+
+    </dl>
+</div>
+<div>
+    <input type="button" value="Solicitar Paquete" onclick="location.href='@Url.Action("Create","SolicitudPaquetes")'" class="btn btn-primary" />
+    <input type="button" value="Solicitar Prestamo" onclick="location.href='@Url.Action("Create","SolicitudPrestamos")'" class="btn btn-primary" />
+    <input type="button" value="Prestamos" onclick="location.href='@Url.Action("Index","Prestamos")'" class="btn btn-primary" />
+    <input type="button" value="Paquete" onclick="location.href='@Url.Action("Index","Paquetes")'" class="btn btn-primary" />
+</div>
+
+

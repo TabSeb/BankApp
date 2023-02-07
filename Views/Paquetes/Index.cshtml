@@ -1,0 +1,80 @@
+﻿@using BancoApp.Models;
+@model IEnumerable<BancoApp.Models.Paquete>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@{    
+    int sessionvalue =(int) HttpContextAccessor.HttpContext.Session.GetInt32("clienteid");    
+
+}
+
+<p>
+    @{
+    }
+
+    @if (Model.Any(p => p.Cliente is PersonaFisica))
+    {
+        <a asp-controller="Home" asp-action="OverviewFisica" asp-route-id="@sessionvalue">Volver para atras</a>
+    }
+    else
+    {
+        <a asp-controller="Home" asp-action="OverviewJuridica" asp-route-id="@sessionvalue">Volver para atras</a>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.esCrediticio)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tarjetas)
+            </th>
+
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.esCrediticio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+
+            <th>
+                    <input type="button" value="Agregar Tarjeta" onclick="location.href='@Url.Action("Create","TarjetaCreditos", new {productId = item.ProductoId})'" class="btn btn-primary" />
+                    <input type="button" value="Ver Tarjeta" onclick="location.href='@Url.Action("Index","TarjetaCreditos", new {productId = item.ProductoId})'" class="btn btn-primary" />
+
+            </th>
+            
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

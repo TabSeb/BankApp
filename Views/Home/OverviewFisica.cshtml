@@ -1,0 +1,60 @@
+﻿@model BancoApp.Models.PersonaFisica
+
+@{
+    ViewData["Title"] = "OverviewFisica";
+
+}
+
+<h1>OverviewFisica</h1>
+
+<div>
+    <h4>PersonaFisica</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.apellido)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.apellido)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tipoDocumento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tipoDocumento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.numeroDocumento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.numeroDocumento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Restriccion)
+        </dt>
+        
+    </dl>
+</div>
+<div>
+    <input type="button" value="Solicitar Paquete" onclick="location.href='@Url.Action("Create","SolicitudPaquetes")'" class="btn btn-primary" />
+    <input type="button" value="Solicitar Prestamo" onclick="location.href='@Url.Action("Create","SolicitudPrestamos")'" class="btn btn-primary" />
+    <input type="button" value="Prestamos" onclick="location.href='@Url.Action("Index","Prestamos")'" class="btn btn-primary" />
+    <input type="button" value="Paquete" onclick="location.href='@Url.Action("Index","Paquetes", new {clienteId = Model.IdCliente})'" class="btn btn-primary" />
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdCliente">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
