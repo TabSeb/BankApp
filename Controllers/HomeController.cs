@@ -5,6 +5,7 @@ using NuGet.Protocol.Plugins;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Azure.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankApp.Controllers
 {
@@ -38,7 +39,7 @@ namespace BankApp.Controllers
             if (ModelState.IsValid)
             {
                 var User = from m in _context.Clientes select m;
-                User =  User.Where(s => s.numeroDocumento == modelJuridica.numeroDocumento);
+                User = User.Include(p => p.Restriccion).Where(s => s.numeroDocumento == modelJuridica.numeroDocumento);
                 if (User.Count() != 0 && (User.First().Restriccion == null))
                 {
                     if (User.First().numeroDocumento == modelJuridica.numeroDocumento)
